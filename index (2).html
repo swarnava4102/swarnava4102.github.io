@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swarnava Bandyopadhyay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0e0d;--ink2:#3a3835;--ink3:#7a7774;
+  --bg:#f5f3ee;--bg2:#edeae3;--accent:#1a3a2a;--accent2:#2d5c40;
+  --line:rgba(0,0,0,0.12);
+  --serif:'DM Serif Display',Georgia,serif;
+  --mono:'DM Mono',monospace;
+  --sans:'Instrument Sans',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:56px;}
+.nav-name{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:0.02em;color:var(--ink2);}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-family:var(--mono);font-size:12px;color:var(--ink3);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;border-bottom:1px solid var(--line);}
+.hero-left{padding:5rem 3rem 4rem 2.5rem;display:flex;flex-direction:column;justify-content:flex-end;border-right:1px solid var(--line);}
+.hero-tag{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--ink3);text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:8px;}
+.hero-tag::before{content:'';display:block;width:24px;height:1px;background:var(--ink3);}
+.hero-name{font-family:var(--serif);font-size:clamp(3rem,5vw,5.5rem);line-height:1.05;font-weight:400;color:var(--ink);margin-bottom:1.5rem;}
+.hero-name em{font-style:italic;color:var(--accent2);}
+.hero-desc{font-size:15px;color:var(--ink2);line-height:1.75;max-width:440px;margin-bottom:3rem;}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn{font-family:var(--mono);font-size:12px;letter-spacing:0.06em;padding:10px 24px;border:1px solid;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-block;}
+.btn-dark{background:var(--accent);color:#f0ede6;border-color:var(--accent);}
+.btn-dark:hover{background:var(--accent2);border-color:var(--accent2);}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line);}
+.btn-ghost:hover{background:var(--bg2);border-color:var(--ink3);}
+.hero-right{padding:5rem 2.5rem 4rem 3rem;display:flex;flex-direction:column;justify-content:space-between;}
+.affil-block{margin-bottom:3rem;}
+.affil-label{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:var(--ink3);text-transform:uppercase;margin-bottom:1rem;}
+.affil-item{display:flex;align-items:baseline;gap:10px;padding:14px 0;border-bottom:1px solid var(--line);}
+.affil-item:first-of-type{border-top:1px solid var(--line);}
+.affil-dot{width:6px;height:6px;border-radius:50%;background:var(--accent2);flex-shrink:0;margin-top:5px;}
+.affil-text{font-size:14px;color:var(--ink2);line-height:1.5;}
+.affil-text strong{color:var(--ink);font-weight:500;}
+section{padding:5rem 2.5rem;}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:3rem;}
+.section-title{font-family:var(--serif);font-size:2rem;font-weight:400;}
+.section-num{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:0.06em;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-body{font-size:15px;color:var(--ink2);line-height:1.85;}
+.about-body p+p{margin-top:1.2rem;}
+.about-pull{font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--accent);line-height:1.5;border-left:2px solid var(--accent2);padding-left:1.5rem;}
+.research-list{display:flex;flex-direction:column;gap:0;}
+.research-item{display:grid;grid-template-columns:80px 1fr auto;gap:2rem;align-items:start;padding:2rem 0;border-bottom:1px solid var(--line);}
+.research-item:first-child{border-top:1px solid var(--line);}
+.r-year{font-family:var(--mono);font-size:12px;color:var(--ink3);padding-top:4px;letter-spacing:0.04em;}
+.r-title{font-size:15px;font-weight:500;color:var(--ink);line-height:1.45;margin-bottom:8px;}
+.r-venue{font-family:var(--mono);font-size:11px;color:var(--ink3);margin-bottom:10px;letter-spacing:0.03em;}
+.r-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.r-tag{font-family:var(--mono);font-size:10px;letter-spacing:0.05em;padding:3px 10px;border:1px solid var(--line);color:var(--ink3);background:var(--bg2);}
+.r-tag.new{background:var(--accent);color:#e8f0eb;border-color:var(--accent);}
+.r-arrow{font-size:18px;color:var(--ink3);padding-top:4px;}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-intro{font-family:var(--serif);font-size:1.8rem;font-weight:400;line-height:1.3;color:var(--ink);margin-bottom:1rem;}
+.contact-sub{font-size:14px;color:var(--ink3);line-height:1.7;}
+.contact-links{display:flex;flex-direction:column;gap:0;}
+.contact-row{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);transition:color 0.2s;}
+.contact-row:first-child{border-top:1px solid var(--line);}
+.contact-row:hover{color:var(--accent2);}
+.contact-row:hover .contact-arr{transform:translateX(4px);}
+.c-label{font-family:var(--mono);font-size:12px;letter-spacing:0.04em;}
+.c-val{font-size:13px;color:var(--ink3);}
+.contact-arr{transition:transform 0.2s;font-size:14px;}
+footer{border-top:1px solid var(--line);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.f-name{font-family:var(--mono);font-size:11px;color:var(--ink3);}
+.f-copy{font-family:var(--mono);font-size:11px;color:var(--ink3);}
+@media(max-width:700px){
+  .hero{grid-template-columns:1fr;}
+  .hero-left{border-right:none;border-bottom:1px solid var(--line);}
+  .about-grid,.contact-wrap{grid-template-columns:1fr;}
+  nav{padding:0 1.25rem;}
+  .nav-links{gap:1.2rem;}
+  section{padding:3.5rem 1.25rem;}
+  .hero-left,.hero-right{padding:3rem 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">S. Bandyopadhyay</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#research">Recent work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag">PhD Researcher · IIT Bombay</div>
+    <h1 class="hero-name">Swarnava<br><em>Bandyo&shy;padhyay</em></h1>
+    <p class="hero-desc">Decision scientist working at the intersection of reinforcement learning, operations research, and algorithmic fairness. I build models that make consequential systems — logistics, routing, resource allocation — more efficient and more equitable.</p>
+    <div class="hero-cta">
+      <a href="#research" class="btn btn-dark">View research</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="affil-block">
+      <div class="affil-label">Affiliations</div>
+      <div class="affil-item"><div class="affil-dot"></div><div class="affil-text"><strong>SJMSOM, IIT Bombay</strong><br>PhD, Decision Sciences & Quantitative Methods</div></div>
+      <div class="affil-item"><div class="affil-dot"></div><div class="affil-text"><strong>Quantitative Research</strong><br>Reinforcement Learning · Combinatorial Optimization</div></div>
+      <div class="affil-item"><div class="affil-dot"></div><div class="affil-text"><strong>Applied Focus</strong><br>Gig Economy · Healthcare Logistics · Fairness in AI</div></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-header">
+    <h2 class="section-title">About</h2>
+    <span class="section-num">01</span>
+  </div>
+  <div class="about-grid">
+    <div class="about-body">
+      <p>I am a PhD researcher in Decision Sciences and Quantitative Methods at Shailesh J. Mehta School of Management, IIT Bombay. My work sits at a productive tension between theoretical rigor and operational impact — designing intelligent systems that don't just optimize for efficiency, but do so in ways that are fair, interpretable, and deployable.</p>
+      <p>My primary research vehicle is reinforcement learning, applied to dynamic and combinatorial problems: routing, dispatch, scheduling. I'm particularly interested in how we encode fairness constraints — drawn from healthcare ethics and mechanism design — into systems that govern gig-economy workers and logistics networks.</p>
+      <p>Alongside my research, I serve as a Teaching Assistant at SJMSOM, IIT Bombay. Outside the lab, I'm drawn to the translation problem: taking quantitative insight and making it legible to decision-makers who don't speak the language of algorithms — an interest that has increasingly pulled me toward management consulting.</p>
+    </div>
+    <div>
+      <p class="about-pull">"The goal is not just to find the optimal policy — it's to find the optimal policy that a fair system would be proud of."</p>
+    </div>
+  </div>
+</section>
+
+<section id="research" style="background:var(--bg2);">
+  <div class="section-header">
+    <h2 class="section-title">Recent work</h2>
+    <span class="section-num">02</span>
+  </div>
+  <div class="research-list">
+    <div class="research-item">
+      <div class="r-year">2026</div>
+      <div class="r-content">
+        <div class="r-title">ESG-Compliant Delivery Dispatch: Healthcare-Inspired Fairness for Gig Economy Logistics</div>
+        <div class="r-venue">Work in progress · SJMSOM, IIT Bombay</div>
+        <div class="r-tags">
+          <span class="r-tag new">In progress</span>
+          <span class="r-tag">Algorithmic fairness</span>
+          <span class="r-tag">Gig economy</span>
+          <span class="r-tag">ESG</span>
+          <span class="r-tag">Dispatch optimization</span>
+        </div>
+      </div>
+      <div class="r-arrow">→</div>
+    </div>
+    <div class="research-item">
+      <div class="r-year">2025</div>
+      <div class="r-content">
+        <div class="r-title">Reinforcement Learning Approaches to the Dynamic Vehicle Routing Problem: A Review and Research Outlook</div>
+        <div class="r-venue">Under review · SJMSOM, IIT Bombay</div>
+        <div class="r-tags">
+          <span class="r-tag">Reinforcement learning</span>
+          <span class="r-tag">Vehicle routing</span>
+          <span class="r-tag">Dynamic optimization</span>
+          <span class="r-tag">Literature review</span>
+        </div>
+      </div>
+      <div class="r-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="contact" style="background:var(--bg2);">
+  <div class="section-header">
+    <h2 class="section-title">Contact</h2>
+    <span class="section-num">03</span>
+  </div>
+  <div class="contact-wrap">
+    <div>
+      <p class="contact-intro">Open to research conversations, consulting opportunities, and collaborations.</p>
+      <p class="contact-sub">Whether you're from industry, academia, or exploring intersections of both — I'm happy to talk about decision science, RL, fairness in systems, or what quantitative research looks like in practice.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:25D1503@iitb.ac.in" class="contact-row">
+        <div><div class="c-label">Email</div><div class="c-val">25D1503@iitb.ac.in</div></div>
+        <span class="contact-arr">→</span>
+      </a>
+      <a href="https://www.linkedin.com/in/swarnava-bandyopadhyay-65323620b/" target="_blank" class="contact-row">
+        <div><div class="c-label">LinkedIn</div><div class="c-val">swarnava-bandyopadhyay</div></div>
+        <span class="contact-arr">→</span>
+      </a>
+      <a href="#" class="contact-row">
+        <div><div class="c-label">CV / Résumé</div><div class="c-val">Download PDF</div></div>
+        <span class="contact-arr">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="f-name">Swarnava Bandyopadhyay · SJMSOM, IIT Bombay</span>
+  <span class="f-copy">© 2026</span>
+</footer>
+
+</body>
+</html>
